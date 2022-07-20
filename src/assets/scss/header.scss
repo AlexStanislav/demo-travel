@@ -1,0 +1,105 @@
+header {
+    width: 100%;
+    background: $mainColor;
+    height: 160px;
+    top: 0;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+  }
+  
+  #header-content {
+    width: 65vw;
+    height: 160px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+  
+  #title {
+    width: fit-content;
+    font-size: 2.8em;
+    color: $mainLightShade;
+  }
+  
+  #sub-title {
+    font-size: 1.5em;
+    color: $mainLightShade;
+  }
+  
+  #company-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 10%;
+    background: $mainLightShade;
+    color: $mainColor;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+  }
+
+  nav{
+    position: absolute;
+    right: 0.2em;
+    top: 1em;
+    display: flex;
+    list-style: none;
+    li{
+      color: $mainLightShade;
+      font-weight: 700;
+      // margin-left: 0.3em;
+      // border: 1px solid $mainLightShade;
+      box-sizing: border-box;
+      padding: 0.4em;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease-in-out;
+    };
+    li:hover{
+      border-bottom: 1px solid $mainLightShade;
+    }
+  }
+  
+  #header-right-content {
+    position: absolute;
+    right: 0;
+    top: 0.5em;
+    display: flex;
+    button {
+      margin: 0 0.2vw;
+      width: 50px;
+      height: 50px;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+    }
+    button:hover{
+      background: $mainLight;
+    }
+  }
+  
+  #currency-button {
+    color: $mainLightShade;
+    font-weight: 700;
+  }
+  
+  @media screen and(max-width:1080px) {
+    #header-content {
+      width: 90%;
+    }
+    #title {
+      font-size: 1.8em;
+    }
+    #sub-title {
+      font-size: 1.1em;
+    }
+  }
