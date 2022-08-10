@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             days: 0,
-            finalPrice: 'Please select the number of days you will be staying'
+            finalPrice: parseInt(this.property.finalPrice, 10) > 0 ? this.property.finalPrice : 'Please select stay duration',
         }
     },
     props:{
@@ -57,6 +57,8 @@ export default {
     watch: {
         days(){
             this.finalPrice = `${this.days * this.property.pricePerDay}`
+            this.property.finalPrice = this.finalPrice
+            window.EventBus.dispatch("priceproperty", this.property)
         }
     },
 }

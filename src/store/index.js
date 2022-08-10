@@ -52,6 +52,7 @@ export default new Vuex.Store({
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim pretium felis vel ornare. Vestibulum auctor faucibus arcu, id tristique libero tincidunt non. Integer in convallis ex.',
         score: '8.9',
         pricePerDay: 100,
+        finalPrice: 0,
         img: 'pexels-felix-mittermeier-2832039'
       },
       {
@@ -61,6 +62,7 @@ export default new Vuex.Store({
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim pretium felis vel ornare. Vestibulum auctor faucibus arcu, id tristique libero tincidunt non. Integer in convallis ex.',
         score: '5.5',
         pricePerDay: 250,
+        finalPrice: 0,
         img: 'pexels-mateusz-sałaciak-4275885'
       },
       {
@@ -70,6 +72,7 @@ export default new Vuex.Store({
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim pretium felis vel ornare. Vestibulum auctor faucibus arcu, id tristique libero tincidunt non. Integer in convallis ex.',
         score: '9.5',
         pricePerDay: 350,
+        finalPrice: 0,
         img: 'pexels-quang-nguyen-vinh-3355732'
       },
       {
@@ -79,6 +82,7 @@ export default new Vuex.Store({
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim pretium felis vel ornare. Vestibulum auctor faucibus arcu, id tristique libero tincidunt non. Integer in convallis ex.',
         score: '7.6',
         pricePerDay: 87,
+        finalPrice: 0,
         img: 'pexels-felix-mittermeier-2832039'
       },
       {
@@ -88,6 +92,7 @@ export default new Vuex.Store({
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim pretium felis vel ornare. Vestibulum auctor faucibus arcu, id tristique libero tincidunt non. Integer in convallis ex.',
         score: '3.5',
         pricePerDay: 98,
+        finalPrice: 0,
         img: 'pexels-mateusz-sałaciak-4275885'
       },
       {
@@ -97,6 +102,7 @@ export default new Vuex.Store({
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim pretium felis vel ornare. Vestibulum auctor faucibus arcu, id tristique libero tincidunt non. Integer in convallis ex.',
         score: '6.5',
         pricePerDay: 120,
+        finalPrice: 0,
         img: 'pexels-quang-nguyen-vinh-3355732'
       },
     ],
@@ -126,6 +132,9 @@ export default new Vuex.Store({
     },
     setfilteredproperties(state, payload){
       state.filteredProperties = payload
+    },
+    setproperties(state, payload){
+      state.properties = payload
     },
     setfilter(state, payload){
       state.filter = payload

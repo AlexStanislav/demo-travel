@@ -33,36 +33,63 @@ export default {
   data() {
     return {
       offers: this.$store.state.offerData,
+      priceproperties: [],
     };
   },
   mounted() {
+    let self = this;
     this.$store.commit("setfilteredproperties", this.$store.state.properties);
+    window.EventBus.listen("priceproperty", function (data) {
+      self.priceproperties.push(data);
+    });
   },
   computed: {
-    properties: function(){
-       return this.$store.state.filteredProperties;
+    properties: function () {
+      return this.$store.state.filteredProperties;
     },
     filter: function () {
       return this.$store.state.filter;
     },
   },
-  watch:{
-    filter: function(newValue, oldValue){
+  watch: {
+    filter: function (newValue, oldValue) {
       let filter = newValue;
-      if(filter !== false){
+      if (filter !== false) {
         let filteredProperties = [];
         for (const property of this.$store.state.properties) {
-          if(property.category == filter.toLowerCase()){
-            filteredProperties.push(property)
+          if (typeof filter.value !== "object") {
+            if (property[filter.name] == filter.value.toLowerCase()) {
+              filteredProperties.push(property);
+            }
+          } else {
+            if (
+              parseInt(filter.value[0], 10) <
+                parseInt(property[filter.name], 10) &&
+              parseInt(property[filter.name], 10) <
+                parseInt(filter.value[1], 10)
+            ) {
+              filteredProperties.push(property);
+            }
           }
         }
-        this.$store.commit("setfilteredproperties", filteredProperties)
-      }else{
-        this.$store.commit("setfilteredproperties", this.$store.state.properties)
+        console.log(filteredProperties);
+        this.$store.commit("setfilteredproperties", filteredProperties);
+      } else {
+        this.$store.commit(
+          "setfilteredproperties",
+          this.$store.state.properties
+        );
       }
       console.log(oldValue);
-    }
-  }
+    },
+    priceproperties: function (newValue, oldValue) {
+      console.log(oldValue);
+      if (newValue.length == 6) {
+        this.$store.commit("setproperties", newValue);
+        this.priceproperties = [];
+      }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -123,17 +150,22 @@ export default {
   background: $mainLight;
 }
 
+@media screen and(max-width:915px) {
+  .home-content {
+    width: 100%;
+  }
+}
 @media screen and(max-width:412px) {
-  #promo-offer-title{
+  #promo-offer-title {
     font-size: 1.2em;
     text-align: center;
   }
 
-  .home-content{
+  .home-content {
     width: 95%;
     margin: auto;
   }
-  #properties-title{
+  #properties-title {
     text-align: center;
     font-size: 1.2em;
   }

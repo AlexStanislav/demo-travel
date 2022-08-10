@@ -17,8 +17,19 @@
         </button>
       </div>
     </div>
-    <div id="mobile-menu-container" v-if="$store.state.isMobile" :style="{'left': `${menuPosition}vw`}">
-      <div id="mobile-menu"></div>
+    <div
+      id="mobile-menu-container"
+      v-if="$store.state.isMobile"
+      :style="{ left: `${menuPosition}vw` }"
+    >
+      <div id="mobile-menu">
+        <div class="filter-title">Stay Duration</div>
+        <stay-inputs />
+        <div class="filter-title">Filter by type</div>
+        <filter-inputs />
+        <div class="filter-title">Filter by price</div>
+        <price-inputs />
+      </div>
     </div>
     <header v-if="$store.state.isMobile == false">
       <div id="header-content" class="desktop-header">
@@ -102,8 +113,11 @@
 <script>
 import modalData from "./assets/js/ModalData";
 import Modals from "./components/Modals.vue";
+import StayInputs from "./components/StayInputs.vue";
+import FilterInputs from "./components/FilterInputs.vue";
+import PriceInputs from "./components/PriceInputs.vue";
 export default {
-  components: { Modals },
+  components: { Modals, StayInputs, FilterInputs, PriceInputs },
   data() {
     return {
       menuPosition: -100,
@@ -153,15 +167,15 @@ export default {
     },
   },
   mounted() {},
-    methods: {
-        toggleMobileMenu(){
-            if(this.menuPosition == 0){
-                this.menuPosition = -100
-            }else{
-                this.menuPosition = 0
-            }
-        }
+  methods: {
+    toggleMobileMenu() {
+      if (this.menuPosition == 0) {
+        this.menuPosition = -100;
+      } else {
+        this.menuPosition = 0;
+      }
     },
+  },
   watch: {
     pageLang(newValue, oldValue) {
       switch (newValue) {
@@ -240,6 +254,8 @@ export default {
   -webkit-box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.45);
   -moz-box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.45);
   box-shadow: inset 0px 1px 5px 0px rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 3;
 }
 
 input::-webkit-outer-spin-button,
@@ -264,11 +280,18 @@ main {
   margin-top: 30px;
 }
 
-@media screen and(max-width: 412px) {
+@media screen and(max-width: 915px) {
+  main{
+    width: 100%;
+  }
+}
+
+@media screen and(max-width: 412px){
   main {
     width: 100%;
   }
 }
+
 
 @import "@/assets/scss/footer";
 </style>

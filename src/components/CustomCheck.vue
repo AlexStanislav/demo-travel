@@ -21,7 +21,7 @@ export default {
     },
     methods:{
         selectCheck(event){
-            this.$store.commit("setfilter", event.target.dataset.filter)
+            this.$store.commit("setfilter", {name: 'category', value: event.target.dataset.filter})
         }
     }
 };
