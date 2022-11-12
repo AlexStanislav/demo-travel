@@ -1,5 +1,5 @@
 # demo-travel
-
+This is a demo for a travel agency
 ## Project setup
 ```
 npm install
